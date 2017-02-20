@@ -483,6 +483,21 @@ mbpcb.pcb_export(shapes, basepath, "pcb_pagoda_2_part2_lhcp")
 shapes = []
 for panel_x in range(panel_count):
 	for panel_y in range(panel_count):
+		shapes += mbpcb.place("pcb1", panel_x*multi_pcb_spacing, panel_y*multi_pcb_spacing, 0.0, False, pol="LHCP" if panel_x < 3 and panel_y%2 else "RHCP")
+
+mbpcb.pcb_export(shapes, basepath, "pcb_pagoda_2_part1_mixed")
+
+shapes = []
+for panel_x in range(panel_count):
+	for panel_y in range(panel_count):
+		shapes += mbpcb.place("pcb2", panel_x*multi_pcb_spacing, panel_y*multi_pcb_spacing, 0.0, False, pol="LHCP" if panel_x < 3 and panel_y%2 else "RHCP")
+
+mbpcb.pcb_export(shapes, basepath, "pcb_pagoda_2_part2_mixed")
+
+
+shapes = []
+for panel_x in range(panel_count):
+	for panel_y in range(panel_count):
 		shapes += mbpcb.place("pcb3", panel_x*multi_pcb_spacing, panel_y*multi_pcb_spacing, 0.0, False)
 
 mbpcb.pcb_export(shapes, basepath, "pcb_pagoda_2_part3")
